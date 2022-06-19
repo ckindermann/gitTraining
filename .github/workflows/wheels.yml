@@ -9,6 +9,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, windows-2019, macOS-10.15]
+        python-version: ['2.7', '3.7', '3.8']
+
 
     steps:
       - uses: actions/checkout@v3
@@ -32,6 +34,6 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.os }} 
+          name: ${{ matrix.os }}-${{ matrix.python-version }}
           path: ./dist/*.whl
           #path: ./wheelhouse/*.whl
