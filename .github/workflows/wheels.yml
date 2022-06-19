@@ -32,5 +32,6 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
+          name: my-artifact 
           path: ./dist/*.whl
           #path: ./wheelhouse/*.whl
