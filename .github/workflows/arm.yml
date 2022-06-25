@@ -14,7 +14,7 @@ jobs:
               platforms: all
 
         - run: |
-            docker run --rm --privileged multiarch/qemu-user-static:register --reset
+            docker run --rm --privileged multiarch/qemu-user-static:register --reset --name arm_container
 
         - uses: docker://multiarch/ubuntu-core:arm64-bionic
           with:
@@ -27,4 +27,7 @@ jobs:
                   "apt-get update &&
                   apt-get install -y python3.6 &&
                   python3.6 --version &&
+                  pwd ttt &&
+                  touch ttt &&
                   python3.6 -c\"import platform; print(platform.machine())\""
+
