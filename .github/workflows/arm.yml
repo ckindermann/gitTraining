@@ -29,5 +29,13 @@ jobs:
                   python3.6 --version &&
                   pwd ttt &&
                   touch ttt &&
+                  ls &&
+                  cp arm_container:/github/workspace/ttt . &&
                   python3.6 -c\"import platform; print(platform.machine())\""
+
+        - uses: actions/upload-artifact@v3
+          with:
+              name: ttt
+              path: .
+
 
