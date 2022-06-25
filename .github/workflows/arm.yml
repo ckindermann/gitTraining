@@ -30,7 +30,7 @@ jobs:
                   pwd ttt &&
                   touch ttt &&
                   ls &&
-                  cp arm_container:/github/workspace/ttt . &&
+                  cp arm_container:ttt . &&
                   python3.6 -c\"import platform; print(platform.machine())\""
 
         - uses: actions/upload-artifact@v3
