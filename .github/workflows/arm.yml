@@ -4,7 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        #python-version: ['2.7', '3.7', '3.8']
+
     steps:
         - name: Check out the repository
           uses: actions/checkout@v2
@@ -30,8 +35,8 @@ jobs:
                   "apt-get update &&
                   apt-get install -y python3.6 &&
                   python3.6 --version &&
-                  pwd ttt &&
                   touch ttt &&
+                  echo ${{ matrix.os }}
                   ls &&
                   python3.6 -c\"import platform; print(platform.machine())\""
 
