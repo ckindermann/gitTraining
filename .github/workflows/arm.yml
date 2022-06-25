@@ -15,6 +15,7 @@ jobs:
 
         - run: |
             docker run --rm --privileged multiarch/qemu-user-static:register --reset --name arm_container
+            docker container ls
 
         - uses: docker://multiarch/ubuntu-core:arm64-bionic
           with:
@@ -32,12 +33,12 @@ jobs:
                   ls &&
                   python3.6 -c\"import platform; print(platform.machine())\""
 
-        - run: |
-            docker cp arm_container:/github/workspace/ttt .
+                  #- run: |
+            # docker cp arm_container:/github/workspace/ttt .
 
-        - uses: actions/upload-artifact@v3
-          with:
-              name: ttt
-              path: .
+                  #- uses: actions/upload-artifact@v3
+                  #with:
+                  #name: ttt
+                  #path: .
 
 
