@@ -35,12 +35,12 @@ jobs:
                   ls &&
                   python3.6 -c\"import platform; print(platform.machine())\""
 
-                  #- run: |
-            # docker cp arm_container:/github/workspace/ttt .
+        - run: |
+            ls
 
-                  #- uses: actions/upload-artifact@v3
-                  #with:
-                  #name: ttt
-                  #path: .
+        - uses: actions/upload-artifact@v3
+          with:
+              name: ttt
+              path: .
 
 
