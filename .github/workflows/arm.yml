@@ -14,12 +14,14 @@ jobs:
               platforms: all
 
         - run: |
-            docker run --rm --privileged multiarch/qemu-user-static:register --reset --name arm_container
-            docker container ls
+            docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
         - uses: docker://multiarch/ubuntu-core:arm64-bionic
           with:
               args: 'uname -a'
+
+        - run: |
+            docker container ls
 
         - uses: docker://multiarch/ubuntu-core:arm64-bionic
           with:
