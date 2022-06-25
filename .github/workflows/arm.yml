@@ -30,8 +30,10 @@ jobs:
                   pwd ttt &&
                   touch ttt &&
                   ls &&
-                  cp arm_container:ttt . &&
                   python3.6 -c\"import platform; print(platform.machine())\""
+
+        - run: |
+            docker cp arm_container:/github/workspace/ttt .
 
         - uses: actions/upload-artifact@v3
           with:
