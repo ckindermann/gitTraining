@@ -4,11 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macOS-latest]
-        #python-version: ['2.7', '3.7', '3.8']
+    runs-on: ubuntu-latest
 
     steps:
         - name: Check out the repository
@@ -21,6 +17,7 @@ jobs:
         - run: |
             docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
+            #need to hardcode ubuntu/windows/macOs here I think
         - uses: docker://multiarch/ubuntu-core:arm64-bionic
           with:
               args: 'uname -a'
@@ -35,8 +32,9 @@ jobs:
                   "apt-get update &&
                   apt-get install -y python3.6 &&
                   python3.6 --version &&
-                  touch ttt &&
-                  echo ${{ matrix.os }}
+                  python -m ensurepip --upgrade &&
+                  python -m pip install wheel && 
+                  python setup.py bdist_wheel --universal &&
                   ls &&
                   python3.6 -c\"import platform; print(platform.machine())\""
 
@@ -45,7 +43,7 @@ jobs:
 
         - uses: actions/upload-artifact@v3
           with:
-              name: ttt
-              path: ./ttt
+              name: wheel
+              path: ./dist/*.whl
 
 
