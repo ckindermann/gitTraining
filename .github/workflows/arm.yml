@@ -32,9 +32,9 @@ jobs:
                   "apt-get update &&
                   apt-get install -y python3.6 &&
                   python3.6 --version &&
-                  python -m ensurepip --upgrade &&
-                  python -m pip install wheel && 
-                  python setup.py bdist_wheel --universal &&
+                  python3.6 -m ensurepip --upgrade &&
+                  python3.6 -m pip install wheel && 
+                  python3.6 setup.py bdist_wheel --universal &&
                   ls &&
                   python3.6 -c\"import platform; print(platform.machine())\""
 
