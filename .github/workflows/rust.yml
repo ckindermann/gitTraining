@@ -18,14 +18,16 @@ jobs:
             docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
             #need to hardcode ubuntu/windows/macOs here I think
-        - uses: docker://multiarch/ubuntu-core:arm64-bionic
+        #- uses: docker://multiarch/ubuntu-core:arm64-bionic
+        - uses: docker://multiarch/ubuntu-core:armhf-bionic
           with:
               args: 'uname -a'
 
         - run: |
             docker container ls
 
-        - uses: docker://multiarch/ubuntu-core:arm64-bionic
+        #- uses: docker://multiarch/ubuntu-core:arm64-bionic
+        - uses: docker://multiarch/ubuntu-core:armhf-bionic
           with:
               args: >
                   bash -c 
@@ -34,8 +36,7 @@ jobs:
                   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y &&
                   source $HOME/.cargo/env &&
                   cargo --help &&
-                  cargo update -p libc &&
-                  cargo install tree-sitter-cli "
+                  cargo install tree-sitter-cli"
 
         - run: |
             ls
