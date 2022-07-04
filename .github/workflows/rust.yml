@@ -32,7 +32,7 @@ jobs:
               args: >
                   bash -c 
                   "apt-get update &&
-                  apt install build-essential &&
+                  apt install build-essential -y &&
                   apt-get install -y curl &&
                   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y &&
                   source $HOME/.cargo/env &&
