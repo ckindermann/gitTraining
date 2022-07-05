@@ -19,7 +19,8 @@ jobs:
 
             #need to hardcode ubuntu/windows/macOs here I think
         #- uses: docker://multiarch/ubuntu-core:arm64-bionic
-        - uses: docker://multiarch/ubuntu-core:armhf-bionic
+        #- uses: docker://multiarch/ubuntu-core:armhf-bionic #works
+        - uses: docker://multiarch/ubuntu-core:arm64-focal
           with:
               args: 'uname -a'
 
@@ -27,7 +28,8 @@ jobs:
             docker container ls
 
         #- uses: docker://multiarch/ubuntu-core:arm64-bionic
-        - uses: docker://multiarch/ubuntu-core:armhf-bionic
+        #- uses: docker://multiarch/ubuntu-core:armhf-bionic works
+        - uses: docker://multiarch/ubuntu-core:arm64-focal
           with:
               args: >
                   bash -c 
